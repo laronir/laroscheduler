@@ -1,12 +1,14 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 
-const index = () => {
+import Bg from '~/components/Background';
+
+const SignUp = () => {
   return (
-    <View>
-      <Text />
-    </View>
+    <Bg>
+      <Text>SignUp</Text>
+    </Bg>
   );
 };
 
-export default index;
+export default SignUp;
