@@ -1,6 +1,5 @@
 import React from 'react';
-// import { Image } from 'react-native';
-
+import PropTypes from 'prop-types';
 import Bg from '~/components/Background';
 import {
   Container,
@@ -13,7 +12,7 @@ import {
 } from './styles';
 import logo from '~/assets/img/logoazul.png';
 
-const SignIn = () => {
+const SignIn = ({ navigation }) => {
   return (
     <Bg>
       <Container>
@@ -34,7 +33,7 @@ const SignIn = () => {
 
           <SubmitButton onPress={() => {}}>Acessar</SubmitButton>
         </Form>
-        <SignLink onPress={() => {}}>
+        <SignLink onPress={() => navigation.navigate('SignUp')}>
           <SignLinkText>Criar conta gratuita.</SignLinkText>
         </SignLink>
       </Container>
@@ -43,3 +42,9 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
+SignIn.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};
