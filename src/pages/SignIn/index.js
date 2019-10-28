@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import Bg from '~/components/Background';
 import {
@@ -13,6 +13,10 @@ import {
 import logo from '~/assets/img/logoazul.png';
 
 const SignIn = ({ navigation }) => {
+  const pwRef = useRef();
+
+  const handleSubmit = () => {};
+
   return (
     <Bg>
       <Container>
@@ -24,17 +28,22 @@ const SignIn = ({ navigation }) => {
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Digite o seu e-mail"
+            returnKeyType="next"
+            onSubmitEditing={() => pwRef.current.focus()}
           />
           <FormInput
             icon="lock-outline"
             secureTextEntry
             placeholder="Sua senha secreta"
+            ref={pwRef}
+            returnKeyType="send"
+            onSubmitEditing={handleSubmit}
           />
 
-          <SubmitButton onPress={() => {}}>Acessar</SubmitButton>
+          <SubmitButton onPress={handleSubmit}>Acessar</SubmitButton>
         </Form>
         <SignLink onPress={() => navigation.navigate('SignUp')}>
-          <SignLinkText>Criar conta gratuita.</SignLinkText>
+          <SignLinkText>Criar conta gratuita</SignLinkText>
         </SignLink>
       </Container>
     </Bg>
