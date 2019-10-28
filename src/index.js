@@ -1,10 +1,6 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import Routes from './routes';
 
 export default function App() {
-  return (
-    <View>
-      <Text>Configuração inicial</Text>
-    </View>
-  );
+  return <Routes />;
 }
