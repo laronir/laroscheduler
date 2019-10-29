@@ -12,16 +12,18 @@ export function* signIn({ payload }) {
       email,
       password,
     });
+
     const { token, user } = res.data;
     if (user.provider) {
       Alert.alert('Erro no login', 'O usuário é um prestador de serviços.');
       return;
     }
 
-    api.defaults.headers.Authorization = `Bearer ${token}`;
+    // api.defaults.headers.Authorization = `Bearer ${token}`;
     yield put(signInSuccess(token, user));
     // history.push('/dashboard');
   } catch (err) {
+    console.tron.warn(err.message);
     Alert.alert('Falha na autenticação', 'Verifique seus dados.');
 
     yield put(signFailure());
@@ -35,7 +37,6 @@ export function* signUp({ payload }) {
       name,
       email,
       password,
-      provider: true,
     });
     // history.push('/');
   } catch (err) {
