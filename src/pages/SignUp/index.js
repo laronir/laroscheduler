@@ -12,7 +12,7 @@ import {
   SignImage,
 } from './styles';
 import { signUpRequest } from '~/store/modules/auth/actions';
-import logo from '~/assets/img/logoazul.png';
+import logo from '~/assets/img/logo.png';
 
 const SignUp = ({ navigation }) => {
   const pwRef = useRef();

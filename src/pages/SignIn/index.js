@@ -11,7 +11,7 @@ import {
   SignLinkText,
   SignImage,
 } from './styles';
-import logo from '~/assets/img/logoazul.png';
+import logo from '~/assets/img/logo.png';
 import { signInRequest } from '~/store/modules/auth/actions';
 
 const SignIn = ({ navigation }) => {
