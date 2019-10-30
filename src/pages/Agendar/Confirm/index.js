@@ -1,12 +1,20 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Background from '~/components/Background';
 
 const Confirm = () => {
-  return (
-    <View>
-      <Text />
-    </View>
-  );
+  return <Background />;
 };
 
 export default Confirm;
+
+Confirm.navigationOptions = ({ navigation }) => ({
+  title: 'Confirmar',
+
+  headerLeft: () => (
+    <TouchableOpacity onPress={() => navigation.navigate('SelectDate')}>
+      <Icon name="chevron-left" size={20} color="#fff" />
+    </TouchableOpacity>
+  ),
+});

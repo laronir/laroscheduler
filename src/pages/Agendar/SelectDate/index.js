@@ -1,12 +1,20 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Background from '~/components/Background';
 
 const SelectDate = () => {
-  return (
-    <View>
-      <Text />
-    </View>
-  );
+  return <Background />;
 };
 
 export default SelectDate;
+
+SelectDate.navigationOptions = ({ navigation }) => ({
+  title: 'Selecione o horário',
+
+  headerLeft: () => (
+    <TouchableOpacity onPress={() => navigation.navigate('SelectProvider')}>
+      <Icon name="chevron-left" size={20} color="#fff" />
+    </TouchableOpacity>
+  ),
+});
