@@ -13,7 +13,7 @@ Confirm.navigationOptions = ({ navigation }) => ({
   title: 'Confirmar',
 
   headerLeft: () => (
-    <TouchableOpacity onPress={() => navigation.navigate('SelectDate')}>
+    <TouchableOpacity onPress={() => navigation.goBack()}>
       <Icon name="chevron-left" size={20} color="#fff" />
     </TouchableOpacity>
   ),

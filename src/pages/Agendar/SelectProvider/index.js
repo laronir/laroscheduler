@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { TouchableOpacity, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '~/components/Background';
@@ -61,3 +62,9 @@ SelectProvider.navigationOptions = ({ navigation }) => ({
     </TouchableOpacity>
   ),
 });
+
+SelectProvider.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};
