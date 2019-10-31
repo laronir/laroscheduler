@@ -60,6 +60,7 @@ export default (isSigned = false) =>
             Profile,
           },
           {
+            resetOnBlur: true,
             keyboardHidesNavigationBar: true,
             activeColor: '#fff',
             inactiveColor: 'rgba(255,255,255,0.6)',

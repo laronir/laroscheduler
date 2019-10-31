@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { format, formatRelative, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -10,7 +12,7 @@ import { Container, Hour, HourList, Title } from './styles';
 
 const SelectDate = ({ navigation }) => {
   const [date, setDate] = useState(new Date());
-  const [time, setTime] = useState([]);
+  const [hours, setHours] = useState([]);
 
   const provider = navigation.getParam('provider');
 
@@ -22,7 +24,7 @@ const SelectDate = ({ navigation }) => {
             date: date.getTime(),
           },
         });
-        setTime(res.data);
+        setHours(res.data);
       } catch (err) {
         Alert.alert(
           'Erro',
@@ -33,10 +35,10 @@ const SelectDate = ({ navigation }) => {
     checkAvailability();
   }, [date, provider.id]);
 
-  const handleSelectHour = data => {
+  const handleSelectHour = time => {
     navigation.navigate('Confirm', {
       provider,
-      time: data,
+      time,
     });
   };
 
@@ -45,18 +47,22 @@ const SelectDate = ({ navigation }) => {
       <Container>
         <DateInput date={date} onChange={setDate} />
         <HourList
-          data={time}
+          data={hours}
           keyExtractor={item => item.time}
-          renderItem={({ item }) => (
-            <Hour
-              onPress={() => {
-                handleSelectHour(item.value);
-              }}
-              enabled={item.available}
-            >
-              <Title>{item.time}</Title>
-            </Hour>
-          )}
+          renderItem={({ item }) => {
+            const horarioLocal = format(parseISO(item.value), 'HH:mm');
+
+            return (
+              <Hour
+                onPress={() => {
+                  handleSelectHour(item.value);
+                }}
+                enabled={item.available}
+              >
+                <Title>{horarioLocal}</Title>
+              </Hour>
+            );
+          }}
         />
       </Container>
     </Background>
