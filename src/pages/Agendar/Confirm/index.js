@@ -16,8 +16,6 @@ const Confirm = ({ navigation }) => {
     () => formatRelative(parseISO(time), new Date(), { locale: pt }),
     [time]
   );
-  console.tron.warn(time);
-  console.tron.warn(timeFormatted);
 
   const handleMakeAppointment = async () => {
     try {

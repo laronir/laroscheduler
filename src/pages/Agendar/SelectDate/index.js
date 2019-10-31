@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { format, formatRelative, parseISO } from 'date-fns';
-import pt from 'date-fns/locale/pt';
+import { format, parseISO } from 'date-fns';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';

@@ -21,7 +21,6 @@ export function* signIn({ payload }) {
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
     yield put(signInSuccess(token, user));
-    // history.push('/dashboard');
   } catch (err) {
     console.tron.warn(err.message);
     Alert.alert('Falha na autenticação', 'Verifique seus dados.');
@@ -38,7 +37,6 @@ export function* signUp({ payload }) {
       email,
       password,
     });
-    // history.push('/');
   } catch (err) {
     Alert.alert('Falha na cadastro', 'Verifique seus dados.');
 
