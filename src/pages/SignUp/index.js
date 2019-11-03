@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import Bg from '~/components/Background';
@@ -11,7 +11,7 @@ import {
   SignLinkText,
   SignImage,
 } from './styles';
-import { signUpRequest } from '~/store/modules/auth/actions';
+import { signUpRequest, clearNavigation } from '~/store/modules/auth/actions';
 import logo from '~/assets/img/logo.png';
 
 const SignUp = ({ navigation }) => {
@@ -22,10 +22,22 @@ const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const loading = useSelector(state => state.auth.loading);
+  const changeRoute = useSelector(state => state.auth.changeRoute);
 
   const handleSubmit = () => {
     dispatch(signUpRequest(name, email, password));
   };
+  useEffect(() => {
+    const redirecionar = () => {
+      if (changeRoute) {
+        navigation.navigate('SignIn');
+      }
+    };
+    redirecionar();
+    return () => {
+      dispatch(clearNavigation());
+    };
+  }, [changeRoute, dispatch, navigation]);
 
   return (
     <Bg>

@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   token: null,
   signed: false,
   loading: false,
+  changeRoute: false,
 };
 
 const auth = (state = INITIAL_STATE, action) => {
@@ -19,9 +20,17 @@ const auth = (state = INITIAL_STATE, action) => {
         draft.loading = false;
         break;
       }
+      case '@auth/SIGN_UP_SUCCESS': {
+        draft.changeRoute = true;
+        break;
+      }
       case '@auth/SIGN_FAILURE': {
         draft.token = null;
         draft.loading = false;
+        break;
+      }
+      case '@auth/CLEAR_NAVIGATION': {
+        draft.changeRoute = false;
         break;
       }
       case '@auth/SIGN_OUT': {
